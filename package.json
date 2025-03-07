@@ -1,0 +1,23 @@
+{
+  "name": "node_api-auth",
+  "version": "1.0.0",
+  "description": "Repositorio donde trabajaremos un servidor de node para poder hacer el consumo de la API de autenticación",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusHaans/Node_API-auth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesusHaans/Node_API-auth/issues"
+  },
+  "homepage": "https://github.com/JesusHaans/Node_API-auth#readme",
+  "dependencies": {
+    "axios": "^1.8.1",
+    "express": "^4.21.2"
+  }
+}
