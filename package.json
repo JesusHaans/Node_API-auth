@@ -18,6 +18,8 @@
   "homepage": "https://github.com/JesusHaans/Node_API-auth#readme",
   "dependencies": {
     "axios": "^1.8.1",
+    "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
     "express": "^4.21.2"
   }
 }
