@@ -1,17 +1,22 @@
-/* 
-    Archivo: routes/index.js
-    Descripción: Define las rutas principales de la aplicación.
-    Cada ruta se vincula a su controlador correspondiente que maneja la lógica de la petición.
-*/
+/**
+ * routes/index.js
+ *
+ * Archivo principal de rutas que integra las rutas de inicio y las de autenticación.
+ */
 
-const express = require('express');                                 // Importa Express para crear un router modular
-const router = express.Router();                                    // Crea una instancia del router
-const homeController = require('../controllers/homeController');    // Importa el controlador para la ruta de inicio
+const express = require('express');
+const router = express.Router();
+const homeController = require('../controllers/homeController');
+const usersRoutes = require('./users');
 
-// Define la ruta raíz ('/') y asigna el controlador que responderá a las solicitudes GET
+/**
+ * Ruta para la página de inicio.
+ */
 router.get('/', homeController.index);
 
-// Se pueden agregar otras rutas y sus controladores en este mismo archivo o en otros archivos de rutas
+/**
+ * Rutas relacionadas con la autenticación de usuarios.
+ */
+router.use('/users', usersRoutes);
 
-// Exporta el router para integrarlo en el archivo principal (app.js)
 module.exports = router;

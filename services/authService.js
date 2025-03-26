@@ -1,16 +1,19 @@
-/* 
-    Archivo: services/authService.js
-    Descripción: Servicio de autenticacion donde consumiremos la API de autenticación.
-    Aqui se va a consumir las funciones de la API que son reguistro de usuario, login y validacion del Token.
-*/
+/**
+ * services/authService.js
+ *
+ * Servicio para interactuar con la API de autenticación.
+ * Utiliza Axios para enviar peticiones HTTP a la API.
+ */
 
-// Función de ejemplo que simula obtener datos de alguna fuente (por ejemplo, una base de datos)
-exports.getData = () => {
-    // Lógica de acceso a datos o procesamiento
-    // En un caso real, se podría realizar una consulta a la base de datos o una llamada a una API
-    return {
-        mensaje: 'Datos obtenidos correctamente desde el servicio'
-    };
+const axios = require('axios');
+
+/**
+ * Realiza una petición POST al endpoint de login de la API de autenticación.
+ *
+ * @param {string} email - Correo electrónico del usuario.
+ * @param {string} password - Contraseña del usuario.
+ * @returns {Promise} - Promesa que se resuelve con la respuesta de la API.
+ */
+exports.login = (email, password) => {
+    return axios.post('http://localhost:4000/auth/login', { email, password });
 };
-
-// Se pueden agregar más funciones relacionadas con la lógica de negocio según sea necesario.

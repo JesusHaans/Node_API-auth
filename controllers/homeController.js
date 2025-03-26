@@ -8,5 +8,5 @@
 exports.index = (req, res) => {
     // Renderiza la vista 'index.ejs' ubicada en la carpeta 'views'
     // Se pasa un objeto con datos (en este caso, el título) que podrán ser utilizados dentro de la plantilla
-    res.render('pages/index');
+    res.render('pages/index', { title: 'Pagina de Inicio' });
 };
