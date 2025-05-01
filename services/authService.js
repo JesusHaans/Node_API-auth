@@ -7,6 +7,10 @@
 
 const axios = require('axios');
 
+// URL base del microservicio de autenticación
+const API_BASE_URL = process.env.AUTH_API_URL || 'http://localhost:4000';
+
+
 //funcion que se conecta con la api de autenticacion para hacer un login
 
 /**
@@ -32,4 +36,35 @@ exports.login = (email, password) => {
  */
 exports.register = (username, email, password) => {
     return axios.post('http://localhost:4000/auth/register', { username, email, password });
+};
+
+//funcion que se conecta con la api de autenticacion para validar el token
+
+/**
+ * Valida un token JWT enviándolo al microservicio de autenticación.
+ *
+ * @param {string} token - El JWT que se desea validar.
+ * @returns {Promise<Object>} - La respuesta de la API, con los datos del usuario si es válido.
+ * @throws {Error} - Lanza un error si no hay token o la API responde con error.
+ */
+exports.validateToken = async (token) => {
+    if (!token) {
+        throw new Error('Token no proporcionado para validación');
+    }
+
+    try {
+        const response = await axios.get(`${API_BASE_URL}/auth/validate`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        return response;  // contiene los datos del usuario y el mensaje
+
+    } catch (error) {
+        // Relanza el error para que el controlador lo maneje
+        throw new Error(
+            error.response?.data?.message || 'Error al validar el token'
+        );
+    }
 };
